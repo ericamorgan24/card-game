@@ -1,0 +1,53 @@
+html
+	head
+
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+
+		link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous")
+
+		title User
+		<!link(rel="stylesheet" type="text/css" href="../../user.css")>
+	body
+		include ../partials/header.pug
+		div(class="container-fluid")
+			div.jumbotron 
+				h1 #{result.username}
+			div.row
+				div#cards.col 
+					h3 Cards
+					br
+					each card in result.cards
+						a(href="/cards/"+card._id) #{card.name}
+						br
+				div#friends.col 
+					h3 Friends 
+					br
+					each friend in result.friends
+						a(href="/users/"+friend._id) #{friend.username}
+						br
+				div#addfriend.col 
+					h3 Add Friend
+					div.input-group.mb-3
+						input.form-control#search(type="text" placeholder="Search")
+						div.input-group-append
+							button.btn.btn-success(type="submit" onclick="search()") Go
+					div#results
+			br
+			div.row
+				div#pending.col-sm-4 
+					h3 Pending... 
+					div#requests 
+						h5 Friend Requests: 
+					div#trades 
+						h5 Trades:
+				div#myTrades.col-sm-8 
+					h3 Trade
+					div#lose
+					div#gain
+
+
+		script(src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous")
+		script(src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous")
+		script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous")
+		script(src="../client-user.js")
